@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 /*Uma classe que representa uma conta bancária com seus métodos.*/
 public class Account {
     private String name;
@@ -20,4 +22,14 @@ public class Account {
     public void deposit(double value) { if(value > 0.0) balance += value; }
 
     public double getBalance() { return balance; }
+
+    public void withdraw(double value) {
+        if(value <= balance) balance -= value;
+        else JOptionPane.showMessageDialog(null, "Valor de débito excedeu o saldo da conta.");
+    }
+
+    public void displayAccount() {
+        String mensagem1 = String.format("Conta\nTitular: %s\nSaldo: R$ %.2f", getName(), getBalance());
+        JOptionPane.showMessageDialog(null, mensagem1);
+    }
 }
