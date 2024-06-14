@@ -7,8 +7,7 @@ public class AccountTest {
         String client = JOptionPane.showInputDialog("Informe o nome do cliente: ");
         Account myAccount = new Account(client, 0);
 
-        String mensagem1 = String.format("Conta no nome de %s criada com sucesso!", myAccount.getName());
-        JOptionPane.showMessageDialog(null, mensagem1);
+        myAccount.displayAccount();
 
         double valor = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor a depositar: "));
         String mensagem2 = String.format("Depositando R$ %.2f na conta...", valor);
@@ -16,8 +15,14 @@ public class AccountTest {
         //System.out.printf("%nDepositando R$ %.2f na conta...%n%n", valor);
         myAccount.deposit(valor);
 
-        String mensagem3 = String.format("%s possui R$ %.2f de saldo.", myAccount.getName(), myAccount.getBalance());
-        JOptionPane.showMessageDialog(null, mensagem3);
+        myAccount.displayAccount();
         //System.out.printf("%s possui R$ %.2f de saldo.%n%n",myAccount.getName(), myAccount.getBalance());
+
+        double saque = Double.parseDouble(JOptionPane.showInputDialog("Informe o valor a sacar: "));
+        String mensagem4 = String.format("Sacando R$ %.2f na conta...", saque);
+        JOptionPane.showMessageDialog(null, mensagem4);
+        myAccount.withdraw(saque);
+
+        myAccount.displayAccount();
     }
 }
